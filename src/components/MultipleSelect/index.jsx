@@ -1,11 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
-
-const options = [
-  { value: "red", label: "red" },
-  { value: "green", label: "green" },
-  { value: "blue", label: "blue" },
-];
+import { Button } from "../ui/button";
 
 const MultipleSelect = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -14,15 +9,27 @@ const MultipleSelect = () => {
     setSelectedOptions(selected);
   };
 
+  const handleSubmit = () => {
+    console.log(
+      "selected colors:",
+      selectedOptions.map((option) => option.label)
+    );
+  };
+
   return (
-    <Select
-      options={options}
-      isMulti
-      value={selectedOptions}
-      onChange={handleChange}
-      placeholder="Select Colors..."
-      isClearable
-    />
+    <div>
+      <Select
+        options={options}
+        isMulti
+        value={selectedOptions}
+        onChange={handleChange}
+        placeholder="Select Colors..."
+        isClearable
+      />
+      <Button variant="outline" onClick={handleSubmit}>
+        Submit
+      </Button>
+    </div>
   );
 };
 

@@ -39,10 +39,13 @@ const App = () => {
   return (
     <div className="App min-h-screen flex justify-center items-center">
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-4xl mx-auto p-4">
-        <div id="resume" className="bg-white shadow-2xl rounded-lg p-6 w-[650px]">
+        <div
+          id="resume"
+          className="bg-white shadow-2xl rounded-lg p-6 w-[650px]"
+        >
           <div className="flex flex-col items-center">
             <img
-              src="/public/images/img-.png" // Replace with actual image source from API integration
+              src="/public/images/img-2.png" // Replace with actual image source from API integration
               alt="Student"
               className="w-32 h-32 rounded-full mb-4"
             />
@@ -97,7 +100,9 @@ const App = () => {
             <h2 className="text-xl font-semibold mb-2">Educational Details</h2>
             <div className="space-y-2">
               <div>
-                <label className="block font-medium">Highest Qualification:</label>
+                <label className="block font-medium">
+                  Highest Qualification:
+                </label>
                 <input
                   {...register("highestQualification", { required: true })}
                   className="outline-none px-4 py-3 w-full border border-black"
@@ -124,7 +129,9 @@ const App = () => {
                 />
               </div>
               <div>
-                <label className="block font-medium">Additional Qualification:</label>
+                <label className="block font-medium">
+                  Additional Qualification:
+                </label>
                 <input
                   {...register("additionalQualification", { required: true })}
                   className="outline-none px-4 py-3 w-full border border-black"
@@ -150,15 +157,16 @@ const App = () => {
                   type="text"
                 />
               </div>
+              <div>
+                <label className="block font-medium">Skills:</label>
+                <input
+                  {...register("eduSkills", { required: true })}
+                  className="outline-none px-4 py-3 w-full border border-black"
+                  placeholder="Skills"
+                  type="text"
+                />
+              </div>
             </div>
-          </div>
-          <div className="border-t border-black mt-4 pt-4">
-            <h2 className="text-xl font-semibold mb-2">Skills</h2>
-            <textarea
-              {...register("skills", { required: true })}
-              className="outline-none px-4 py-3 w-full border border-black"
-              placeholder="List your skills here..."
-            />
           </div>
         </div>
         <div className="flex justify-center mt-4">
@@ -169,7 +177,6 @@ const App = () => {
           >
             Download Resume
           </button>
-          
         </div>
       </form>
     </div>

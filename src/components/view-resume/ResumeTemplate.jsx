@@ -1,186 +1,58 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import React from 'react';
 
-const App = () => {
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const downloadResume = () => {
-    const input = document.getElementById("resume");
-
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
-      let position = 0;
-
-      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
-
-      pdf.save("resume.pdf");
-    });
-  };
-
-  return (
-    <div className="App min-h-screen flex justify-center items-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-4xl mx-auto p-4">
-        <div
-          id="resume"
-          className="bg-white shadow-2xl rounded-lg p-6 w-[650px]"
-        >
-          <div className="flex flex-col items-center">
-            <img
-              src="/public/images/img-2.png" // Replace with actual image source from API integration
-              alt="Student"
-              className="w-32 h-32 rounded-full mb-4"
-            />
-            <div className="w-full grid grid-cols-2 gap-4">
-              <input
-                {...register("firstName", { required: true })}
-                className="outline-none px-4 py-3 w-full border border-black mb-2"
-                placeholder="First Name"
-                type="text"
-              />
-              <input
-                {...register("lastName", { required: true })}
-                className="outline-none px-4 py-3 w-full border border-black mb-2"
-                placeholder="Last Name"
-                type="text"
-              />
+const ResumeTemplate = () => {
+    return (
+        <div className="max-w-screen-lg mx-auto bg-white shadow-lg p-8 my-8">
+            <div className="relative block page flex">
+                {/* Left Sidebar */}
+                <div className="w-1/3 bg-gray-200 py-10 px-6 relative">
+                    {/* Profile Image */}
+                    <div className="mugshot mb-4">
+                        <img src="/public/images/img-2.png" alt="Profile" className="w-full h-auto rounded-full" />
+                    </div>
+                    {/* Contact Information and Social Links */}
+                    <div>
+                        <p>123 My Place Drive</p>
+                        <p>Astoria, New York 11105</p>
+                        <p>1-800-CALLPLZ</p>
+                        <p>emailsareforsquares@gmail.com</p>
+                        <br/>
+                        <p className="block social twitter">Twitter stuff</p>
+                        <p className="block social pinterest">Pinterest things</p>
+                        <p className="block social linked-in">Linked-in man</p>
+                        <p className="uppercase block mt-6 font-semibold">Expertise</p>
+                        <p className="block list-thing">HTML</p>
+                        <p className="block list-thing">CSS (Stylus)</p>
+                        <p className="block list-thing">JavaScript & jQuery</p>
+                        <p className="block list-thing">Killer Taste</p>
+                        <p className="uppercase block mt-6 font-semibold">Education</p>
+                        <p className="block list-thing">Advanced potion making</p>
+                        <p className="block list-thing">Degree in popping and locking</p>
+                        <p className="block list-thing">Knitting game on point</p>
+                        <p className="block list-thing">Culinary af</p>
+                    </div>
+                </div>
+                
+                {/* Main Content Container */}
+                <div className="relative content-container ml-6 px-10 py-6 w-2/3">
+                    <h2 className="uppercase text-center text-4xl font-semibold mb-4">Jr Front-End Developer</h2>
+                    <div className="block bg-gray-400 h-px w-96 mx-auto mb-6"></div>
+                    <div className="uppercase text-gray-600 mb-2">Profile</div>
+                    <p className="text-justify mb-8">Retro DIY quinoa, mixtape williamsburg master cleanse bushwick tumblr chillwave dreamcatcher hella wolf paleo...</p>
+                    <div className="uppercase text-gray-600 mb-2">Experience</div>
+                    <h3 className="font-semibold text-xl mb-2">Job #1</h3>
+                    <p className="text-gray-700 mb-4">First job description</p>
+                    <p className="text-justify mb-8">Plaid gentrify put a bird on it, pickled XOXO farm-to-table irony raw denim messenger bag leggings...</p>
+                    <h3 className="font-semibold text-xl mb-2">Job #2</h3>
+                    <p className="text-gray-700 mb-4">Second Job Description</p>
+                    <p className="text-justify mb-8">Beard before they sold out photo booth distillery health goth...</p>
+                    <h3 className="font-semibold text-xl mb-2">Job #3</h3>
+                    <p className="text-gray-700 mb-4">Third Job Description</p>
+                    <p className="text-justify mb-8">Next level roof party lo-fi fingerstache skateboard...</p>
+                </div>
             </div>
-          </div>
-          <div className="border-t border-black mt-4 pt-4">
-            <h2 className="text-xl font-semibold mb-2">Contact Details</h2>
-            <div className="space-y-2">
-              <div>
-                <label className="block font-medium">Phone:</label>
-                <input
-                  {...register("phone", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Phone"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">Email:</label>
-                <input
-                  {...register("email", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Email"
-                  type="email"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">Address:</label>
-                <input
-                  {...register("address", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Address"
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-black mt-4 pt-4">
-            <h2 className="text-xl font-semibold mb-2">Educational Details</h2>
-            <div className="space-y-2">
-              <div>
-                <label className="block font-medium">
-                  Highest Qualification:
-                </label>
-                <input
-                  {...register("highestQualification", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Highest Qualification"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">Institute:</label>
-                <input
-                  {...register("institute", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Institute"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">Board:</label>
-                <input
-                  {...register("board", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Board"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">
-                  Additional Qualification:
-                </label>
-                <input
-                  {...register("additionalQualification", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Additional Qualification"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">Experience:</label>
-                <input
-                  {...register("experience", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Experience"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">Expected Salary:</label>
-                <input
-                  {...register("expectedSalary", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Expected Salary"
-                  type="text"
-                />
-              </div>
-              <div>
-                <label className="block font-medium">Skills:</label>
-                <input
-                  {...register("eduSkills", { required: true })}
-                  className="outline-none px-4 py-3 w-full border border-black"
-                  placeholder="Skills"
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
         </div>
-        <div className="flex justify-center mt-4">
-          <button
-            type="button"
-            onClick={downloadResume}
-            className="px-4 py-2 bg-black hover:bg-slate-900 text-white rounded mr-4"
-          >
-            Download Resume
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-};
+    );
+}
 
-export default App;
+export default ResumeTemplate;

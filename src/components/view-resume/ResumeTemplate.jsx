@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 const ResumeTemplate = () => {
     return (
@@ -17,9 +19,21 @@ const ResumeTemplate = () => {
                         <p>1-800-CALLPLZ</p>
                         <p>emailsareforsquares@gmail.com</p>
                         <br/>
-                        <p className="block social twitter">Twitter stuff</p>
-                        <p className="block social pinterest">Pinterest things</p>
-                        <p className="block social linked-in">Linked-in man</p>
+                        <div>
+                            <h3 className="uppercase text-gray-600 mb-2 font-semibold">Contact Details</h3>
+                            <div className="flex items-center mb-2">
+                                <FontAwesomeIcon icon={faPhone} className="text-gray-700 mr-2" />
+                                <p>1-800-CALLPLZ</p>
+                            </div>
+                            <div className="flex items-center mb-2">
+                                <FontAwesomeIcon icon={faEnvelope} className="text-gray-700 mr-2" />
+                                <p>emailsareforsquares@gmail.com</p>
+                            </div>
+                            <div className="flex items-center">
+                                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-gray-700 mr-2" />
+                                <p>123 My Place Drive, Astoria, New York 11105</p>
+                            </div>
+                        </div>
                         <p className="uppercase block mt-6 font-semibold">Expertise</p>
                         <p className="block list-thing">HTML</p>
                         <p className="block list-thing">CSS (Stylus)</p>
@@ -32,7 +46,7 @@ const ResumeTemplate = () => {
                         <p className="block list-thing">Culinary af</p>
                     </div>
                 </div>
-                
+
                 {/* Main Content Container */}
                 <div className="relative content-container ml-6 px-10 py-6 w-2/3">
                     <h2 className="uppercase text-center text-4xl font-semibold mb-4">Jr Front-End Developer</h2>

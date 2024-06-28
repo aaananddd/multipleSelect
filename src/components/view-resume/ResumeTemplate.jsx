@@ -10,7 +10,12 @@ const ResumeTemplate = () => {
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
   return (
     <div>
-      <button onClick={() => toPDF()}>Download PDF</button>
+      <button
+        className="flex justify-center  bg-black hover:bg-gray-700 text-white font-bold py-2 px-4  outline-none focus:outline-none"
+        onClick={() => toPDF()}
+      >
+        Download Resume
+      </button>
       <div ref={targetRef}>
         <div className="max-w-screen-lg mx-auto bg-white shadow-lg p-8 my-8">
           <div className="relative block page flex">
@@ -102,7 +107,6 @@ const ResumeTemplate = () => {
             </div>
           </div>
         </div>
-        ;
       </div>
     </div>
   );

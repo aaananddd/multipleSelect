@@ -66,6 +66,12 @@ const ResumeTemplate = () => {
               <h2 className="uppercase text-center text-4xl font-semibold mb-4">
                 John Doe
               </h2>
+              <div className="uppercase text-gray-600 mb-2">About</div>
+              <p className="text-justify mb-8">
+                Driven by a deep curiosity for technology and a keen eye for
+                design, I specialize in front-end development with a focus on
+                creating intuitive interfaces and seamless user interactions.
+              </p>
               <div className="block bg-gray-400 h-px w-96 mx-auto mb-6"></div>
 
               <div className="uppercase text-gray-600  mb-2">

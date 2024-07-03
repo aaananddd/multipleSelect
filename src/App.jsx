@@ -1,4 +1,4 @@
-import InternProfileModal from "./components/InternProfileModal";
+import MultipleValueSelect from "./components/MultipleValues";
 
 const App = () => {
   return (
@@ -6,7 +6,8 @@ const App = () => {
       <div className=" w-3/4">
 
          {/* <ResumeTemplate /> */}
-         <InternProfileModal />
+         {/* <InternProfileModal /> */}
+         <MultipleValueSelect />
       </div>
     </div>
   );

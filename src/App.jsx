@@ -1,4 +1,4 @@
-import MultipleValueSelect from "./components/MultipleValues";
+import ReactTextEditor from "./components/ReactTextEditor";
 
 const App = () => {
   return (
@@ -7,7 +7,8 @@ const App = () => {
 
          {/* <ResumeTemplate /> */}
          {/* <InternProfileModal /> */}
-         <MultipleValueSelect />
+         {/* <MultipleValueSelect /> */}
+         <ReactTextEditor />
       </div>
     </div>
   );
